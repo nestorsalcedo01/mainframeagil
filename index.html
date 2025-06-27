@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investigación: Agilidad LPAR en Mainframe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+        .tab-button.active {
+            border-color: #3b82f6;
+            background-color: #3b82f6;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Header -->
+    <header class="bg-slate-900 text-white p-4 shadow-md sticky top-0 z-50">
+        <div class="container mx-auto">
+            <h1 class="text-2xl md:text-3xl font-bold">Investigación: Agilidad para LPARs en IBM Z</h1>
+        </div>
+    </header>
+
+    <div class="container mx-auto flex flex-col md:flex-row gap-8 p-4 md:p-8">
+
+        <!-- Sidebar Navigation -->
+        <aside class="w-full md:w-1/4 lg:w-1/5">
+            <div class="sticky top-24">
+                <h2 class="text-lg font-semibold mb-4 text-slate-900 border-b pb-2">Secciones del Informe</h2>
+                <nav>
+                    <ul class="space-y-2">
+                        <li><a href="#introduccion" class="block text-slate-600 hover:text-blue-600 hover:font-semibold transition-all">Introducción</a></li>
+                        <li><a href="#zosmf" class="block text-slate-600 hover:text-blue-600 hover:font-semibold transition-all">1. z/OSMF</a></li>
+                        <li><a href="#ansible" class="block text-slate-600 hover:text-blue-600 hover:font-semibold transition-all">2. Ansible</a></li>
+                        <li><a href="#zowe" class="block text-slate-600 hover:text-blue-600 hover:font-semibold transition-all">3. Zowe</a></li>
+                        <li><a href="#sa" class="block text-slate-600 hover:text-blue-600 hover:font-semibold transition-all">4. System Automation</a></li>
+                        <li><a href="#planes" class="block text-slate-600 hover:text-blue-600 hover:font-semibold transition-all">5. Planes Maestros</a></li>
+                        <li><a href="#recomendaciones" class="block text-slate-600 hover:text-blue-600 hover:font-semibold transition-all">6. Recomendaciones</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="w-full md:w-3/4 lg:w-4/5">
+            <div class="space-y-12">
+                
+                <!-- Section: Introduction -->
+                <section id="introduccion" class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-4 text-slate-900 border-b pb-2">Introducción: El Imperativo de la Agilidad</h2>
+                    <p class="mb-4">En el panorama digital actual, la velocidad y la agilidad son requisitos fundamentales. Para las organizaciones que dependen del mainframe IBM Z, existe una tensión entre la fiabilidad de la plataforma y la agilidad esperada de las TI modernas. La necesidad de generar LPARs de forma fácil y rápida es una necesidad estratégica para alinear el mainframe con los paradigmas de agilidad.</p>
+                    <div class="bg-amber-100 border-l-4 border-amber-500 text-amber-700 p-4 rounded-md">
+                        <p><strong class="font-semibold">El Cuello de Botella Heredado:</strong> Tradicionalmente, el aprovisionamiento de LPARs es un proceso manual, meticuloso y lento. La complejidad, la falta de documentación y la brecha de habilidades han creado un cuello de botella que aumenta costos y ralentiza la innovación.</p>
+                    </div>
+                     <p class="mt-4"><strong class="font-semibold text-slate-800">El Cambio de Paradigma: Infraestructura como Código (IaC) en IBM Z.</strong> La solución es pasar de la intervención manual a un modelo de IaC. El ecosistema de IBM Z ha evolucionado para adoptar este paradigma, proporcionando un conjunto de herramientas modernas (z/OSMF, Ansible, Zowe, SA for z/OS) que pueden trabajar en conjunto para ofrecer la agilidad deseada.</p>
+                    <div class="mt-6 table-container">
+                        <h3 class="text-xl font-semibold mb-3 text-slate-800">Comparativa de Herramientas Clave</h3>
+                        <table class="w-full text-sm text-left text-gray-500 rounded-lg shadow-sm">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">Herramienta</th>
+                                    <th scope="col" class="px-6 py-3">Propósito Principal</th>
+                                    <th scope="col" class="px-6 py-3">Fortaleza Clave</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-white border-b">
+                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">z/OSMF</th>
+                                    <td class="px-6 py-4">Marco de gestión y capa de API para z/OS.</td>
+                                    <td class="px-6 py-4">Servicios fundamentales y gobernados de z/OS.</td>
+                                </tr>
+                                <tr class="bg-gray-50 border-b">
+                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Ansible</th>
+                                    <td class="px-6 py-4">Motor de orquestación de TI empresarial.</td>
+                                    <td class="px-6 py-4">Orquestación multiplataforma de extremo a extremo.</td>
+                                </tr>
+                                <tr class="bg-white border-b">
+                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Zowe</th>
+                                    <td class="px-6 py-4">Marco open-source para interacción moderna.</td>
+                                    <td class="px-6 py-4">Reduce la barrera de entrada y mejora la experiencia del desarrollador.</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">System Automation</th>
+                                    <td class="px-6 py-4">Automatización basada en políticas para alta disponibilidad.</td>
+                                    <td class="px-6 py-4">Resiliencia y gestión de operaciones de producción (Day-2).</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Section: z/OSMF -->
+                <section id="zosmf" class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-4 text-slate-900 border-b pb-2">1. La Piedra Angular: z/OS Management Facility (z/OSMF)</h2>
+                    <p class="mb-4">z/OSMF es un elemento base de z/OS que proporciona el marco indispensable para gestionar el sistema a través de una UI moderna y, más importante, un conjunto de API REST. Es el prerrequisito no negociable para cualquier estrategia de automatización.</p>
+                    <ul class="list-disc list-inside space-y-2 mb-4">
+                        <li><strong>Puerta de enlace de API:</strong> Expone funciones complejas de z/OS como servicios RESTful modernos.</li>
+                        <li><strong>Motor de Gobernanza:</strong> Permite a los administradores retener el control y aplicar estándares a través de plantillas y flujos de trabajo, mientras se ofrece autoservicio.</li>
+                        <li><strong>Cloud Provisioning & Management (CP&M):</strong> Permite crear un catálogo de autoservicio para middleware (CICS, Db2, MQ), transformando el aprovisionamiento de entornos.</li>
+                        <li><strong>Motor de Flujos de Trabajo:</strong> Automatiza tareas complejas de gestión del sistema mediante un conjunto de pasos guiados y estructurados.</li>
+                    </ul>
+                </section>
+                
+                <!-- Section: Ansible -->
+                <section id="ansible" class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-4 text-slate-900 border-b pb-2">2. El Motor de Orquestación: Ansible para IBM Z</h2>
+                    <p class="mb-4">Mientras que z/OSMF proporciona los servicios en z/OS, Ansible actúa como el motor de orquestación de nivel empresarial. Su función es conectar y automatizar flujos de trabajo de extremo a extremo que abarcan múltiples plataformas. Ansible no reemplaza JCL o REXX, los orquesta.</p>
+                    <p class="mb-4">La automatización se realiza a través de <strong class="font-semibold">Colecciones Certificadas</strong>, que son paquetes de módulos, roles y plugins específicos para IBM Z:</p>
+                    <ul class="list-disc list-inside space-y-2 mb-4">
+                        <li><code class="bg-slate-200 text-sm p-1 rounded">ibm_zhmc</code>: Para interactuar con la HMC y crear, activar y gestionar LPARs.</li>
+                        <li><code class="bg-slate-200 text-sm p-1 rounded">ibm_zos_core</code>: Para tareas básicas de z/OS como someter trabajos, crear datasets y ejecutar comandos.</li>
+                        <li><code class="bg-slate-200 text-sm p-1 rounded">ibm_zosmf</code>: Para orquestar los servicios de z/OSMF, como el aprovisionamiento de software a través de plantillas CP&M.</li>
+                        <li><code class="bg-slate-200 text-sm p-1 rounded">ibm_zos_sysauto</code>: Para integrarse con System Automation.</li>
+                    </ul>
+                    <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 rounded-md">
+                        <p><strong class="font-semibold">Flujo de Aprovisionamiento con Ansible:</strong> Un playbook de Ansible puede automatizar todo el proceso: 1) Crear y activar la LPAR vía HMC, 2) Configurar el SO base, y 3) Invocar a z/OSMF para desplegar el middleware necesario.</p>
+                    </div>
+                </section>
+
+                <!-- Section: Zowe -->
+                <section id="zowe" class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-4 text-slate-900 border-b pb-2">3. La Interfaz Humana: Usabilidad con Zowe</h2>
+                    <p class="mb-4">Zowe aborda un aspecto crítico: la experiencia del usuario y del desarrollador. Es un marco de código abierto que hace que la interacción con z/OS sea similar a las plataformas en la nube, reduciendo la barrera de entrada para la nueva generación de talento.</p>
+                    <ul class="list-disc list-inside space-y-2 mb-4">
+                        <li><strong>CLI de Zowe:</strong> Permite interactuar con z/OS desde estaciones de trabajo locales (Windows, macOS, Linux) con una sintaxis familiar, integrándose con herramientas como VS Code.</li>
+                        <li><strong>API Mediation Layer:</strong> Actúa como un proxy inverso y un único punto de acceso para todas las API REST de z/OS, simplificando la configuración del cliente y mejorando la seguridad.</li>
+                        <li><strong>Integración Práctica:</strong> Un desarrollador puede usar Zowe para validar y depurar un entorno recién aprovisionado por Ansible sin necesidad de una terminal 3270.</li>
+                    </ul>
+                </section>
+                
+                <!-- Section: System Automation -->
+                <section id="sa" class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-4 text-slate-900 border-b pb-2">4. Preparación para Producción: IBM System Automation for z/OS</h2>
+                    <p class="mb-4">El aprovisionamiento ágil debe ser sostenible y robusto en producción. System Automation (SA) proporciona la capa de automatización operativa (Day-2) necesaria para gestionar, monitorear y mantener los entornos con alta disponibilidad.</p>
+                    <p class="mb-4">SA utiliza una <strong class="font-semibold">automatización basada en políticas y orientada a objetivos.</strong> En lugar de scripts, se define una política que describe los recursos, sus relaciones y su estado deseado. El motor de SA trabaja para mantener ese estado.</p>
+                     <ul class="list-disc list-inside space-y-2 mb-4">
+                        <li><strong>Alta Disponibilidad y Autorreparación:</strong> Si una aplicación o subsistema falla, SA puede reiniciarlo automáticamente o moverlo a un sistema de respaldo.</li>
+                        <li><strong>Integración con Ansible:</strong> Un playbook de Ansible puede, como paso final, invocar a la API de SA para añadir el recurso recién creado a la política de automatización, asegurando que esté bajo gestión y protección desde el primer momento.</li>
+                    </ul>
+                </section>
+                
+                <!-- Section: Planes Maestros -->
+                <section id="planes" class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-4 text-slate-900 border-b pb-2">5. Planes Maestros Integrados para LPAR-as-a-Service</h2>
+                    <p class="mb-4">Combinando las herramientas, es posible diseñar planes maestros que materialicen el concepto de "LPAR-as-a-Service".</p>
+                    
+                    <!-- Tabs for Planes Maestros -->
+                    <div class="mb-4 border-b border-gray-200">
+                        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="myTab" role="tablist">
+                            <li class="mr-2" role="presentation">
+                                <button class="inline-block p-4 border-b-2 rounded-t-lg tab-button active" onclick="openTab(event, 'plan1')">Plan 1: Pipeline Automatizado</button>
+                            </li>
+                            <li class="mr-2" role="presentation">
+                                <button class="inline-block p-4 border-b-2 rounded-t-lg tab-button" onclick="openTab(event, 'plan2')">Plan 2: Portal de Autoservicio</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div id="plan1" class="tab-content">
+                            <h3 class="text-xl font-semibold mb-3 text-slate-800">Plan Maestro 1: El Pipeline de Aprovisionamiento Totalmente Automatizado</h3>
+                            <p class="mb-4">Este plan utiliza Ansible como el orquestador principal para ejecutar un pipeline de extremo a extremo. Un único playbook maestro invocaría una serie de roles para pasar de una solicitud a una LPAR totalmente funcional y gestionada.</p>
+                            <div class="table-container">
+                               <table class="w-full text-sm text-left text-gray-500 rounded-lg shadow-sm">
+                                    <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+                                        <tr>
+                                            <th scope="col" class="px-6 py-3">Etapa</th>
+                                            <th scope="col" class="px-6 py-3">Herramienta Principal</th>
+                                            <th scope="col" class="px-6 py-3">Propósito</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="bg-white border-b"><td class="px-6 py-4 font-medium">1. Definición de LPAR</td><td class="px-6 py-4">Ansible + HMC</td><td class="px-6 py-4">Crear la definición de hardware de la LPAR.</td></tr>
+                                        <tr class="bg-gray-50 border-b"><td class="px-6 py-4 font-medium">2. Activación de LPAR</td><td class="px-6 py-4">Ansible + SA</td><td class="px-6 py-4">Poner en marcha la LPAR y realizar el IPL inicial.</td></tr>
+                                        <tr class="bg-white border-b"><td class="px-6 py-4 font-medium">3. Configuración del SO</td><td class="px-6 py-4">Ansible Core</td><td class="px-6 py-4">Realizar la personalización básica de z/OS.</td></tr>
+                                        <tr class="bg-gray-50 border-b"><td class="px-6 py-4 font-medium">4. Aprovisionamiento de Middleware</td><td class="px-6 py-4">Ansible + z/OSMF</td><td class="px-6 py-4">Invocar plantillas para desplegar CICS, Db2, etc.</td></tr>
+                                        <tr class="bg-white border-b"><td class="px-6 py-4 font-medium">5. Inscripción Operativa</td><td class="px-6 py-4">Ansible + SA</td><td class="px-6 py-4">Añadir los nuevos recursos a la política de alta disponibilidad.</td></tr>
+                                        <tr class="bg-gray-50"><td class="px-6 py-4 font-medium">6. Validación Final</td><td class="px-6 py-4">Ansible + Zowe</td><td class="px-6 py-4">Confirmar que el entorno está operativo.</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="plan2" class="tab-content hidden">
+                            <h3 class="text-xl font-semibold mb-3 text-slate-800">Plan Maestro 2: El Portal de Autoservicio en la Nube (IBM z/OS Cloud Broker)</h3>
+                            <p class="mb-4">Este plan lleva la automatización al siguiente nivel, transformando el pipeline en un elemento de catálogo de autoservicio consumible desde una plataforma de nube como Red Hat OpenShift. Esto se logra a través del <strong class="font-semibold">IBM z/OS Cloud Broker</strong>.</p>
+                            <p class="mb-4">El Cloud Broker expone las plantillas del catálogo de z/OSMF como servicios en OpenShift. Un desarrollador de la nube puede entonces aprovisionar un entorno CICS/Db2 con unos pocos clics, sin necesidad de conocimientos de z/OS.</p>
+                             <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded-md">
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li><strong class="font-semibold">Experiencia sin Fricción:</strong> El desarrollador aprovisiona desde un portal que ya conoce.</li>
+                                    <li><strong class="font-semibold">Gobernanza Centralizada:</strong> El equipo de mainframe mantiene el control total a través de las plantillas de z/OSMF.</li>
+                                    <li><strong class="font-semibold">Integración Híbrida:</strong> Facilita la conexión entre aplicaciones en contenedores y servicios en el mainframe.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Section: Recomendaciones -->
+                <section id="recomendaciones" class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-4 text-slate-900 border-b pb-2">6. Recomendaciones Estratégicas y Hoja de Ruta</h2>
+                    <p class="mb-4">La transformación hacia un modelo ágil es un viaje. Se recomienda un enfoque por fases, iterativo, para construir capacidades y demostrar valor.</p>
+                     <h3 class="text-lg font-semibold mb-3 text-slate-800">Hoja de Ruta de Implementación</h3>
+                    <ol class="list-decimal list-inside space-y-2">
+                        <li><strong>Fase 1: Configuración Fundamental.</strong> Instalar y configurar z/OSMF, Python, ZOAU y Ansible.</li>
+                        <li><strong>Fase 2: Automatización Central.</strong> Automatizar tareas de bajo riesgo con `ibm_zos_core` para ganar experiencia.</li>
+                        <li><strong>Fase 3: Aprovisionamiento de Software.</strong> Desarrollar plantillas en z/OSMF y orquestarlas con Ansible.</li>
+                        <li><strong>Fase 4: Automatización Completa de LPAR.</strong> Integrar todo con `ibm_zhmc` para un pipeline completo.</li>
+                        <li><strong>Fase 5: Integración Empresarial.</strong> Exponer la automatización a la empresa vía z/OS Cloud Broker o herramientas CI/CD como Jenkins.</li>
+                    </ol>
+                    <p class="mt-4"><strong class="font-semibold">El Imperativo Cultural:</strong> La tecnología no es suficiente. Se debe fomentar una cultura DevOps de colaboración, invertir en habilidades y asegurar el compromiso de la dirección para romper los silos organizacionales.</p>
+                </section>
+
+            </div>
+        </main>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white mt-12 p-4 text-center">
+        <p>&copy; 2024 Resumen de Investigación de Agilidad en Mainframe. Contenido generado para demostración.</p>
+    </footer>
+
+    <script>
+        // JavaScript for tab functionality
+        function openTab(evt, tabName) {
+            // Get all elements with class="tab-content" and hide them
+            let tabcontent = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tab-button" and remove the "active" class
+            let tabbuttons = document.getElementsByClassName("tab-button");
+            for (let i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+</body>
+</html>
